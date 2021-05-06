@@ -21,6 +21,7 @@ class NemIDAuthorizerTest {
         assertTrue(legalCPR);
         assertTrue(legalPassword);
         assertTrue(legalPassword2);
+        //exceptions:
         //password too short
         assertThrows(IllegalPasswordException.class,()->nemIDTest.checkPasswordValidity("g5y", "1234567890"));
         //password too short (borderline, 5 chars)
@@ -49,7 +50,5 @@ class NemIDAuthorizerTest {
         assertThrows(InputMismatchException.class,()->nemIDTest.checkCprValidity("12345678900"));
         //cpr is correct length, but not numbers
         assertThrows(InputMismatchException.class,()->nemIDTest.checkCprValidity("abcdefgijk"));
-
-
     }
 }
